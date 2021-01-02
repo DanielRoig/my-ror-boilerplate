@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Author, type: :model do
   it { should have_many(:books) }
-  
+
   describe '.create' do
-    let(:valid_params) { valid_author.attributes }
+    let(:valid_params) { attributes_for(:author) }
 
     let(:valid_author) { create(:author) }
     let(:valid_result) { valid_author }
@@ -20,17 +20,17 @@ RSpec.describe Author, type: :model do
 
         it_behaves_like 'is invalid'
       end
-      context 'second_name is nil' do
-        let(:invalid_param) { { second_name: nil } }
+      context 'last_name is nil' do
+        let(:invalid_param) { { last_name: nil } }
 
         it_behaves_like 'is invalid'
       end
       context 'duplicated email' do
         let(:new_author) { create(:author) }
         let(:invalid_param) do
-          { 
-            email: new_author.email 
-          } 
+          {
+            email: new_author.email
+          }
         end
 
         it_behaves_like 'is invalid'

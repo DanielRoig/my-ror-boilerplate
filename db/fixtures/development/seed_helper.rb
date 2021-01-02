@@ -8,9 +8,12 @@ module SeedHelper
         def books_to_create
             CONFIG.dig(:books, :count) 
         end
-        def author_email(identifier)
-            predictable_email(identifier, role: :author)
-        end
+        def users_to_create
+            CONFIG.dig(:users, :count) 
+         end
+         def books_to_create
+             CONFIG.dig(:books, :count) 
+         end
         def predictable_email(identifier, role:)
             "#{role}_#{identifier}@test.test"
         end

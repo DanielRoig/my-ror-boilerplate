@@ -31,6 +31,14 @@ class ErrorHandler
         http_status: 404,
         level: :warning
       }
+    end,
+    'Grape::Exceptions::ValidationErrors' => lambda do |_error|
+      {
+        code: 'invalid_params',
+        message: 'Missing required parameters',
+        http_status: 422,
+        level: :warning
+      }
     end
   }.freeze
 
@@ -50,7 +58,6 @@ class ErrorHandler
   def call(env)
     @app.call(env)
   rescue StandardError => e
-    puts e
     error_type = ERRORS.fetch(e.class.name, DEFAULT_ERROR).call(e)
 
     error_body = {

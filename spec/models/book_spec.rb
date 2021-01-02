@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Book, type: :model do
   it { should belong_to(:author) }
-  
+
   describe '.create' do
-    let(:valid_params) { valid_book.attributes }
+    let(:valid_params) { attributes_for(:book) }
 
     let(:valid_book) { build(:book) }
     let(:valid_result) { valid_book }
@@ -36,12 +36,11 @@ RSpec.describe Book, type: :model do
         it_behaves_like 'is invalid'
       end
       context 'duplicated isbn' do
-     
         let(:new_book) { create(:book) }
         let(:invalid_param) do
-          { 
-            isbn: new_book.isbn 
-          } 
+          {
+            isbn: new_book.isbn
+          }
         end
 
         it_behaves_like 'is invalid'

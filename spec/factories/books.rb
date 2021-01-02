@@ -1,10 +1,10 @@
 FactoryBot.define do
   factory :book do
     author
-    title { "El árbol de la ciencia" }
+    title { Faker::Lorem.sentence }
     category { 1 }
-    price { 950 }
+    price { Faker::Number.within(range: 1..10_000) }
 
-    sequence(:isbn) { |n| n}
+    sequence(:isbn) { |n| n }
   end
 end

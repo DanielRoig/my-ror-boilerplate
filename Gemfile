@@ -1,18 +1,20 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.2'
+ruby '3.1.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.1.0'
+gem 'rails', '~> 7.0.3'
 # Use dotenv-rails to load environment vars
 gem 'dotenv-rails', '~> 2.7.6'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
-#Use Seed Fu to easily populate lookup tables
+# Use Seed Fu to easily populate lookup tables
 gem 'seed-fu', '~> 2.3.9'
+# Use RESTClient as HTTP and REST client
+gem 'rest-client'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -22,10 +24,13 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.0'
+# Use Sidekiq Pro for even more awesome background processing.
+gem 'sidekiq', '~> 5.2.9'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+# Use paranoia as a temporary solution to handle soft-deletes
+gem 'paranoia', '~> 2.6.0'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -51,10 +56,12 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0'
   # Use Factory Bot to fixture replacement
   gem 'factory_bot_rails'
-  # Use faker to create fake seeds
-  gem 'faker'
   # Use SimpleCov to test coverage
   gem 'simplecov', require: false
+  # Use faker to create fake seeds
+  gem 'faker'
+  # Provides support for Cross-Origin Resource Sharing (CORS) for Rack compatible web applications.
+  gem 'rack-cors'
 end
 
 group :development do
@@ -68,6 +75,8 @@ end
 group :test do
   # Use ShouldaMatchers to extend testing matchers collection
   gem 'shoulda-matchers', '~> 4.3.0'
+  # Use rspec-JsonExpectations to add Json matchers to testing collection.
+  gem 'rspec-json_expectations'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'

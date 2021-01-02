@@ -3,12 +3,11 @@ require:
   - rubocop-performance
 
 AllCops:
-  TargetRubyVersion: 2.7.2
+  TargetRubyVersion: 3.0
   Exclude:
     - 'bin/*'
     - 'config/**/*'
     - 'db/**/*'
-    - 'spec/**/*'
     - 'Guardfile'
   NewCops: enable
 Style/Documentation:

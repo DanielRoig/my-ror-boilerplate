@@ -16,11 +16,13 @@ module API
 
           def find_or_create_author
             @author = Author.find_or_create_by!(first_name: params.dig(:author, :first_name),
-                                               second_name: params.dig(:author, :second_name))
+                                               last_name: params.dig(
+                                                 :author, :last_name
+                                               ))
 
             unless @author
               raise API::Exceptions::InvalidOperation,
-                    "Unable to crate Author"
+                    'Unable to crate Author'
             end
           end
         end
@@ -61,18 +63,16 @@ module API
             requires :price, type: Integer
             requires :author, type: Hash do
               requires :first_name,
-                       type: String,
-                       documentation: 'First name author'
-              requires :second_name,
-                       type: String,
-                       documentation: 'Second name author'
+                       type: String
+              requires :last_name,
+                       type: String
             end
           end
 
           post do
             find_or_create_author
             ::Books::CreateService.call(title: params[:title], category: params[:category],
-                                        isbn: params[:isbn], price: params[:price], 
+                                        isbn: params[:isbn], price: params[:price],
                                         author: @author)
 
             status :created

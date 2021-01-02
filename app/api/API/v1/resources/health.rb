@@ -7,7 +7,7 @@ module API
           desc 'Returns the health of the service'
           get do
             status :ok
-            health = { status: 'tot ok',
+            health = { status: 'ok',
                       other_data: 'no expose' }
             present health, with: API::V1::Entities::Health
           end

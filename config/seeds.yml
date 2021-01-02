@@ -3,3 +3,5 @@ development: &development
     count: 20
   books:
     count: 10
+  users:
+    count: 10

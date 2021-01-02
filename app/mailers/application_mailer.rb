@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'from@example.com'
+  default from: ENV['RAILS_API_BOILERPLATE_EMAIL']
   layout 'mailer'
 end
