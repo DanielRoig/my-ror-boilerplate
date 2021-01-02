@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password: root
+  port: 5433
+
+development:
+ <<: *default
+ database: sample_project_development
+ host: <%= ENV['RAILS_API_BOILERPLATE_LOCAL_IP'] %>
+
+test:
+ <<: *default
+ database: sample_project_test
+ host: <%= ENV['RAILS_API_BOILERPLATE_LOCAL_IP'] %>
+
+production:
+ <<: *default
+ url: <%= ENV['DATABASE_URL'] %>

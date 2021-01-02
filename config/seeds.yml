@@ -1,0 +1,5 @@
+development: &development
+  authors:
+    count: 20
+  books:
+    count: 10
