@@ -7,5 +7,11 @@ FactoryBot.define do
     biography { 'MyText' }
 
     sequence(:email) { |n| "pio.baroja#{n}@gen98.es"}
+
+    trait :with_books do
+      after(:create) do |author|
+        FactoryBot.create_list(:book, 10, author: author)
+      end
+    end
   end
 end

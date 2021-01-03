@@ -5,6 +5,6 @@ FactoryBot.define do
     category { 1 }
     price { 950 }
 
-    sequence(:isbn) { |n| n}
+    sequence(:isbn) { |n| n }
   end
 end

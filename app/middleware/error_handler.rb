@@ -58,7 +58,6 @@ class ErrorHandler
   def call(env)
     @app.call(env)
   rescue StandardError => e
-    puts e
     error_type = ERRORS.fetch(e.class.name, DEFAULT_ERROR).call(e)
 
     error_body = {
