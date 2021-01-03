@@ -68,6 +68,8 @@ end
 group :test do
   # Use ShouldaMatchers to extend testing matchers collection
   gem 'shoulda-matchers', '~> 4.3.0'
+  # Use rspec-JsonExpectations to add Json matchers to testing collection.
+  gem 'rspec-json_expectations'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'

@@ -48,7 +48,7 @@ module API
               requires :first_name, type: String
               requires :second_name, type: String
               requires :email, type: String
-              requires :birth, type: String
+              requires :birth, type: DateTime
               requires :born_country, type: String
               requires :biography, type: String
             end
@@ -60,7 +60,6 @@ module API
                                             birth: params[:birth],
                                             born_country: params[:born_country], 
                                             biography: params[:biography])
-  
               status :created
               present author, with: API::V1::Entities::Author
             end
