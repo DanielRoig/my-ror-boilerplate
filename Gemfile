@@ -35,6 +35,9 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'grape', '~> 1.5.1'
 # Use GrapeEntity as a JSON presenter
 gem 'grape-entity'
+# Gemfile
+gem 'activeadmin'
+gem 'devise'
 
 group :development, :test do
   # Use Pry to debug
